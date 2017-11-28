@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>数据在模板的展示</title>
+</head>
+<body>
+	用户名：{$username}
+	<br>
+	姓名：{$person['name']}  ---  {$person.name} --- {$person.sex|default='保密'}
+	<br>
+	时间：{$time|date='Y-m-d H:i:s',###}  ----- {:date('Y-m-d H:i:s', $time)}
+	<br>
+	页码：{$Think.get.page}
+	<br>
+	<table>
+		<tr>
+			<td>编号</td>
+			<td>姓名</td>
+			<td>性别</td>
+			<td>年龄</td>
+		</tr>
+		<volist name="team" key="k" id="v">
+		<tr>
+			<td>{$k}</td>
+			<td>{$v.name}</td>
+			<td><if condition=" $v.sex == 1 ">女<else/>男</if></td>
+			<td>{$v.age}</td>
+		</tr>
+		</volist>
+	</table>
+
+
+	<table>
+		<tr>
+			<td>编号</td>
+			<td>姓名</td>
+			<td>性别</td>
+			<td>年龄</td>
+		</tr>
+		<foreach name="team" key="k" item="v">
+		<tr>
+			<td>{$k}</td>
+			<td>{$v.name}</td>
+			<td><if condition=" $v.sex == 1 ">女<else/>男</if></td>
+			<td>{$v.age}</td>
+		</tr>
+		</foreach>
+	</table>
+</body>
+</html>
